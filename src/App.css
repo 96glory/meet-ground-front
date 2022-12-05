@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 body {
-  background-color: #f6f6f6;
+  background-color: #f9f7f7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +34,7 @@ body {
 }
 
 .Home {
-  background-color: #e6e6e6;
+  background-color: #dbe2ef;
   margin: 0px;
 }
 

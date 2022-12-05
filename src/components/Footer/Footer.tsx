@@ -5,24 +5,27 @@ import { HomeRounded, ManageSearchRounded, PeopleRounded, SettingsRounded } from
 import { useRecoilState } from 'recoil';
 import { selectedMenuIndexState } from './Footer.atom';
 
+// https://colorhunt.co/palette/f9f7f7dbe2ef3f72af112d4e
+
 const useStyles = makeStyles({
-  navigation: {
-    fontFamily: 'Noto Sans KR',
-  },
-  action: {
-    backgroundColor: 'black',
+  root: {
+    '& .MuiBottomNavigationAction-label': {
+      paddingTop: '5px',
+    },
+    '& .Mui-selected': {
+      color: '#3F72AF !important',
+      '& .MuiBottomNavigationAction-label': {
+        transition: 'none',
+        fontWeight: 'bold',
+        // lineHeight: '20px',
+      },
+    },
   },
 });
-
-// https://stackoverflow.com/questions/54375096/styling-bottomnavigation-in-react-js-material-ui
 
 const Footer = () => {
   const classes = useStyles();
   const [selectedMenuIndex, setSelectedMenuIndex] = useRecoilState(selectedMenuIndexState);
-
-  useEffect(() => {
-    console.log('glory - file: Footer.tsx:27 - useEffect - selectedMenuIndex', selectedMenuIndex);
-  }, [selectedMenuIndex]);
 
   return (
     <BottomNavigation
@@ -31,12 +34,12 @@ const Footer = () => {
         setSelectedMenuIndex(newValue);
       }}
       showLabels
-      className={classes.navigation}
+      className={classes.root}
     >
-      <BottomNavigationAction className={classes.action} label="Home" icon={<HomeRounded />} />
-      <BottomNavigationAction className={classes.action} label="모임 탐색" icon={<ManageSearchRounded />} />
-      <BottomNavigationAction className={classes.action} label="모임 관리" icon={<PeopleRounded />} />
-      <BottomNavigationAction className={classes.action} label="계정" icon={<SettingsRounded />} />
+      <BottomNavigationAction label="Home" icon={<HomeRounded />} />
+      <BottomNavigationAction label="모임 탐색" icon={<ManageSearchRounded />} />
+      <BottomNavigationAction label="모임 관리" icon={<PeopleRounded />} />
+      <BottomNavigationAction label="계정" icon={<SettingsRounded />} />
     </BottomNavigation>
   );
 };
