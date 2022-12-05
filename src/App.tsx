@@ -8,8 +8,12 @@ function App() {
   return (
     <RecoilRoot>
       <div className="App">
-        <MGRouter />
-        <Footer />
+        <div className="Page">
+          <MGRouter />
+        </div>
+        <div className="Footer">
+          <Footer />
+        </div>
       </div>
     </RecoilRoot>
   );

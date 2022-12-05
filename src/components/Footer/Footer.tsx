@@ -5,12 +5,13 @@ import { HomeRounded, ManageSearchRounded, PeopleRounded, SettingsRounded } from
 import { useRecoilState } from 'recoil';
 import { selectedMenuIndexState } from './Footer.store';
 
-// https://colorhunt.co/palette/f9f7f7dbe2ef3f72af112d4e
-
 const useStyles = makeStyles({
   root: {
+    '& .MuiBottomNavigation-root, & .MuiButtonBase-root': {
+      height: '50px',
+    },
     '& .MuiBottomNavigationAction-label': {
-      paddingTop: '5px',
+      paddingTop: '2px',
     },
     '& .Mui-selected': {
       color: '#3F72AF !important',

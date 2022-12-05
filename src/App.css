@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
+/** color https://colorhunt.co/palette/f9f7f7dbe2ef3f72af112d4e 
+ * #F9F7F7
+ * #DBE2EF
+ * #3F72AF
+ * #112D4E 
+ * 배색 : https://www.color-hex.com/
+ */
+
 body {
   background-color: #f9f7f7;
   display: flex;
@@ -33,27 +41,45 @@ body {
   padding-right: 20px;
 }
 
-.Home {
-  background-color: #dbe2ef;
-  margin: 0px;
+.Page {
+  height: calc(100vh - 60px);
+  overflow-y: scroll;
+  /* IE and Edge */
+  /* -ms-overflow-style: none; */
+  /* Firefox */
+  /* scrollbar-width: none; */
+}
+
+.Page::-webkit-scrollbar {
+  width: 5px;
+  /* Chrome, Safari, Opera */
+  /* display: none; */
+}
+
+/* Track */
+.Page::-webkit-scrollbar-track {
+  /* background: #e7eaed; */
+  background: transparent;
+}
+
+/* Handle */
+.Page::-webkit-scrollbar-thumb {
+  background: #9fabb8;
+  border-radius: 10px;
+  min-height: 10px;
+}
+
+/* Handle on hover */
+.Page::-webkit-scrollbar-thumb:hover {
+  background: #8896a6;
 }
 
 .Footer {
-  border-top: 1px solid gray;
-
-  display: grid;
+  padding-top: 4px;
   height: 50px;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 20px;
-  justify-content: center;
 }
 
-.Footer > div {
-  cursor: pointer;
-  border: 1px solid red;
-  border-radius: 5px;
-  text-align: center;
-  align-items: center;
-  display: grid;
-  white-space: nowrap;
+.Home {
+  background-color: #dbe2ef;
+  margin: 0px;
 }
