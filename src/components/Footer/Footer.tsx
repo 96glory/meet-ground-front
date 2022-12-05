@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
 import { HomeRounded, ManageSearchRounded, PeopleRounded, SettingsRounded } from '@mui/icons-material';
 import { useRecoilState } from 'recoil';
-import { selectedMenuIndexState } from './Footer.atom';
+import { selectedMenuIndexState } from './Footer.store';
 
 // https://colorhunt.co/palette/f9f7f7dbe2ef3f72af112d4e
 

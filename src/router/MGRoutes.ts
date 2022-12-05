@@ -5,12 +5,12 @@ import NotFound from 'pages/NotFound/NotFound.page';
 import Main from 'pages/service/Main/Main.page';
 import Study from 'pages/service/Study/Study.page';
 
-interface T_MG_routes {
+interface TMGroutes {
   path: string;
   element: () => JSX.Element;
 }
 
-export const MG_routes: T_MG_routes[] = [
+export const MGRoutes: TMGroutes[] = [
   {
     path: '/',
     element: Home,
