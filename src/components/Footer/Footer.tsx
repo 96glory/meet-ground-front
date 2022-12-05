@@ -1,7 +1,9 @@
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
 import { HomeRounded, ManageSearchRounded, PeopleRounded, SettingsRounded } from '@mui/icons-material';
+import { useRecoilState } from 'recoil';
+import { selectedMenuIndexState } from './Footer.atom';
 
 const useStyles = makeStyles({
   navigation: {
@@ -16,13 +18,17 @@ const useStyles = makeStyles({
 
 const Footer = () => {
   const classes = useStyles();
-  const [value, setValue] = useState(0);
+  const [selectedMenuIndex, setSelectedMenuIndex] = useRecoilState(selectedMenuIndexState);
+
+  useEffect(() => {
+    console.log('glory - file: Footer.tsx:27 - useEffect - selectedMenuIndex', selectedMenuIndex);
+  }, [selectedMenuIndex]);
 
   return (
     <BottomNavigation
-      value={value}
+      value={selectedMenuIndex}
       onChange={(event, newValue) => {
-        setValue(newValue);
+        setSelectedMenuIndex(newValue);
       }}
       showLabels
       className={classes.navigation}
