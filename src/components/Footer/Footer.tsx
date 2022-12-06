@@ -1,5 +1,5 @@
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
-import React, { memo, useEffect } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
 import { HomeRounded, ManageSearchRounded, PeopleRounded, SettingsRounded } from '@mui/icons-material';
 import { useRecoilState } from 'recoil';
@@ -33,33 +33,41 @@ const Footer = memo(() => {
 
   const [selectedMenuIndex, setSelectedMenuIndex] = useRecoilState(selectedMenuIndexState);
 
+  // url path를 직접 입력해서 접근했을 때
   useEffect(() => {
-    // 1순위 : selectedMenuIndex
-    // 2순위 : location
-
-    const routeFindByMenuIndex = MGRoutes.find((route) => route.menuIndex === selectedMenuIndex);
-
-    if (routeFindByMenuIndex) {
-      navigate(routeFindByMenuIndex.path);
-      return;
-    }
-
     const routeFindByLocation = MGRoutes.find((route) => route.path === pathname);
 
     if (routeFindByLocation) {
+      if (routeFindByLocation.menuIndex) {
+        setSelectedMenuIndex(routeFindByLocation.menuIndex);
+      }
       navigate(routeFindByLocation.path);
       return;
     }
 
     navigate('/NotFound');
-  }, [pathname, selectedMenuIndex]);
+  }, [pathname]);
+
+  // 하단 navigation을 눌러 화면에 접근했을 때
+  const onChangeBottomNavigationValue = useCallback(
+    (event: React.SyntheticEvent<Element, Event>, newValue: any) => {
+      setSelectedMenuIndex(newValue);
+
+      const routeFindByMenuIndex = MGRoutes.find((route) => route.menuIndex === newValue);
+
+      if (routeFindByMenuIndex) {
+        navigate(routeFindByMenuIndex.path);
+      } else {
+        navigate('/NotFound');
+      }
+    },
+    [],
+  );
 
   return (
     <BottomNavigation
       value={selectedMenuIndex}
-      onChange={(event, newValue) => {
-        setSelectedMenuIndex(newValue);
-      }}
+      onChange={onChangeBottomNavigationValue}
       showLabels
       className={classes.root}
     >
